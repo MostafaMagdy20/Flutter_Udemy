@@ -3,8 +3,8 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_course/shared/components/components.dart';
-import 'package:flutter_course/shared/cubit/cubit.dart';
-import 'package:flutter_course/shared/cubit/states.dart';
+import 'package:flutter_course/shared/todo_cubit/cubit.dart';
+import 'package:flutter_course/shared/todo_cubit/states.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:intl/intl.dart';
 

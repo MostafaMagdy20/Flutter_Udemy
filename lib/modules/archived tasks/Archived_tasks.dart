@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_course/shared/todo_cubit/cubit.dart';
+import 'package:flutter_course/shared/todo_cubit/states.dart';
 import '../../shared/components/components.dart';
-import '../../shared/cubit/cubit.dart';
-import '../../shared/cubit/states.dart';
-
 
 class ArchivedTasks extends StatefulWidget {
   const ArchivedTasks({Key? key}) : super(key: key);

@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_course/shared/cubit/states.dart';
+import 'package:flutter_course/shared/network/local/cache_helper.dart';
+import 'package:flutter_course/shared/todo_cubit/states.dart';
 import 'package:sqflite/sqflite.dart';
 import '../../modules/archived tasks/Archived_tasks.dart';
 import '../../modules/done tasks/Done_tasks.dart';
@@ -162,6 +163,23 @@ class AppCubit extends Cubit<AppStates>
     fabicon = icon;
 
     emit(ChangeBottomSheetState());
+  }
+
+  bool isDark = false;
+  void changeAppMode({bool? fromCache})
+  {
+    if(fromCache != null)
+    {
+      isDark = fromCache;
+      emit(ChangeAppMode());
+    } else
+    {
+      isDark = !isDark;
+      CacheHelper.putDate(key: 'isDark', value: isDark).then((value)
+      {
+        emit(ChangeAppMode());
+      });
+    }
   }
 
 }
