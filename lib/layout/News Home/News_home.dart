@@ -1,6 +1,8 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_course/modules/search/search_screen.dart';
+import 'package:flutter_course/shared/components/components.dart';
 import 'package:flutter_course/shared/news_cubit/cubit.dart';
 import 'package:flutter_course/shared/news_cubit/states.dart';
 import 'package:flutter_course/shared/todo_cubit/cubit.dart';
@@ -10,69 +12,69 @@ class NewsHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => NewsCubit()..getBusinessData()..getSportsData()..getScienceData(),
-      child: BlocConsumer<NewsCubit , NewsStates>(
-        listener: (context, state) {},
-        builder: (context , state)
-        {
-          NewsCubit cubit = NewsCubit.get(context);
+    return BlocConsumer<NewsCubit , NewsStates>(
+      listener: (context, state) {},
+      builder: (context , state)
+      {
+        NewsCubit cubit = NewsCubit.get(context);
 
-          return Scaffold(
-            appBar: AppBar(
-              title: const Text(
-                  'News App'
-              ),
-              actions:
-              [
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.search
-                    ),
-                ),
-                IconButton(
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text(
+                'News App'
+            ),
+            actions:
+            [
+              IconButton(
                   onPressed: ()
                   {
-                    AppCubit.get(context).changeAppMode();
+                    navigateTo(context, SearchScreen());
                   },
                   icon: const Icon(
-                      Icons.dark_mode
+                    Icons.search
                   ),
-                )
-              ],
-            ),
-            body: cubit.screens[cubit.currentIndex],
-            bottomNavigationBar: CurvedNavigationBar(
-              index: cubit.currentIndex,
-              onTap: (index)
-              {
-                cubit.changeBottomNavBar(index);
-              },
-              animationDuration: const Duration(milliseconds: 300),
-              height: 58,
-              color: AppCubit.get(context).isDark ? Colors.black : Colors.white,
-              backgroundColor: AppCubit.get(context).isDark ? Colors.white : Colors.black,
-              buttonBackgroundColor: AppCubit.get(context).isDark ? Colors.black : Colors.white,
-              items:
-              [
-                Icon(
-                  Icons.business_outlined,
-                  color: AppCubit.get(context).isDark ? Colors.white : Colors.black,
+              ),
+              IconButton(
+                onPressed: ()
+                {
+                  AppCubit.get(context).changeAppMode();
+                },
+                icon: const Icon(
+                    Icons.dark_mode
                 ),
-                Icon(
-                  Icons.sports_volleyball,
-                  color: AppCubit.get(context).isDark ? Colors.white : Colors.black,
-                ),
-                Icon(
-                  Icons.science_outlined,
-                  color: AppCubit.get(context).isDark ? Colors.white : Colors.black,
-                ),
-              ],
-            ),
-          );
-        },
-      ),
+              )
+            ],
+          ),
+          body: cubit.screens[cubit.currentIndex],
+          bottomNavigationBar: CurvedNavigationBar(
+            index: cubit.currentIndex,
+            onTap: (index)
+            {
+              cubit.changeBottomNavBar(index);
+            },
+            animationDuration: const Duration(milliseconds: 300),
+            height: 58,
+            color: AppCubit.get(context).isDark ? Colors.black : Colors.white,
+            backgroundColor: AppCubit.get(context).isDark ? Colors.white : Colors.black,
+            buttonBackgroundColor: AppCubit.get(context).isDark ? Colors.black : Colors.white,
+            items:
+            [
+              Icon(
+                Icons.business_outlined,
+                color: AppCubit.get(context).isDark ? Colors.white : Colors.black,
+              ),
+              Icon(
+                Icons.sports_volleyball,
+                color: AppCubit.get(context).isDark ? Colors.white : Colors.black,
+              ),
+              Icon(
+                Icons.science_outlined,
+                color: AppCubit.get(context).isDark ? Colors.white : Colors.black,
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

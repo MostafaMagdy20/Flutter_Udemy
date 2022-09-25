@@ -1,6 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_course/modules/web%20view/web_view_screen.dart';
 import 'package:flutter_course/shared/todo_cubit/cubit.dart';
 import 'package:flutter_course/shared/todo_cubit/states.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -31,6 +32,7 @@ Widget defaultButton({
 
 Widget defaultTFF({
   Color tffColor = Colors.green,
+  Color textColor = Colors.green,
   required TextEditingController controller,
   required TextInputType type,
   double borderRadius = 0.0,
@@ -44,7 +46,7 @@ Widget defaultTFF({
   VoidCallback? onTap,
 }) =>
     TextFormField(
-      style: const TextStyle(color: Colors.black),
+      style: TextStyle(color: tffColor),
       validator: (String? value) => validator(value),
       onChanged: onchange,
       onTap: onTap,
@@ -221,13 +223,16 @@ Widget taskItem(List<Map> tasks) => ConditionalBuilder(
       ),
     );
 
-Widget buildArticleItem(article, context)
-{
-  return BlocConsumer<AppCubit , AppStates>(
-    listener: (context , state) {},
-    builder: (context , state)
-    {
-      return Padding(
+Widget buildArticleItem(article, context) => BlocConsumer<AppCubit , AppStates>(
+  listener: (context , state) {},
+  builder: (context , state)
+  {
+    return GestureDetector(
+      onTap: ()
+      {
+        navigateTo(context, WebViewScreen(article['url']));
+      },
+      child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Row(
           children: [
@@ -236,8 +241,8 @@ Widget buildArticleItem(article, context)
               height: 130.0,
               decoration: BoxDecoration(
                 border: Border.all(
-                    width: 2 ,
-                    color: AppCubit.get(context).isDark? Colors.white : Colors.black,
+                  width: 2 ,
+                  color: AppCubit.get(context).isDark? Colors.white : Colors.black,
                 ),
                 borderRadius: BorderRadius.circular(60.0),
                 image: article['urlToImage'] != null
@@ -281,12 +286,12 @@ Widget buildArticleItem(article, context)
             ),
           ],
         ),
-      );
-    },
-  );
-}
+      ),
+    );
+  },
+);
 
-Widget articleListBuilder(article)
+Widget articleListBuilder(article , context , {isSearch = false})
 {
   return BlocConsumer<AppCubit , AppStates>(
     listener: (context , state) {},
@@ -309,8 +314,9 @@ Widget articleListBuilder(article)
                 color: Colors.black,
               ),
             ),
-            itemCount: article.length),
-        fallback: (context) => AppCubit.get(context).isDark? Center(
+            itemCount: article.length
+        ),
+        fallback: (context) => isSearch ? Container() : AppCubit.get(context).isDark ? Center(
             child: CircularProgressIndicator(
               color: Colors.white,
             )) : Center(
@@ -321,3 +327,14 @@ Widget articleListBuilder(article)
     },
   );
 }
+
+void navigateTo(context , widget) => Navigator.push(
+    context,
+    MaterialPageRoute(
+        builder: (context) => widget
+    )
+);
+
+
+
+
