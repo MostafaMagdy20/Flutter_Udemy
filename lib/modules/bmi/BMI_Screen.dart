@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_course/modules/bmi%20result/BMI_result_screen.dart';
+import 'package:flutter_course/shared/components/components.dart';
 
 
 class BmiScreen extends StatefulWidget {
@@ -323,16 +324,11 @@ class _BmiScreenState extends State<BmiScreen> {
                 var result = weight / pow(height/100 , 2);
                 print(result.round());
 
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => BmiResult(
-                          age: age,
-                          gender: male,
-                          result: result.round(),
-
-                        ))
-                );
+                navigateTo(context, BmiResult(
+                    gender: male,
+                    age: age,
+                    result: result.round()
+                ));
               },
               child: const Text(
                 'Calculate',

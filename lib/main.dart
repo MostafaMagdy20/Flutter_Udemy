@@ -11,6 +11,7 @@ import 'package:flutter_course/modules/home/home.dart';
 import 'package:flutter_course/shared/bloc_observer.dart';
 import 'package:flutter_course/shared/network/local/cache_helper.dart';
 import 'package:flutter_course/shared/network/remote/dio_helper.dart';
+import 'package:flutter_course/shared/news_cubit/cubit.dart';
 import 'package:flutter_course/shared/todo_cubit/cubit.dart';
 import 'package:flutter_course/shared/todo_cubit/states.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -39,10 +40,12 @@ class MyApp extends StatelessWidget
   @override
   Widget build(BuildContext context)
   {
-    return BlocProvider(
-      create: (context) => AppCubit()..changeAppMode(
-        fromCache: isDark
-      ),
+    return MultiBlocProvider(
+      providers:
+      [
+        BlocProvider(create: (context) => NewsCubit()..getBusinessData()..getSportsData()..getScienceData()),
+        BlocProvider(create: (context) => AppCubit()..changeAppMode(fromCache: isDark)),
+      ],
       child: BlocConsumer<AppCubit , AppStates>(
         listener: (context , state) => {},
         builder: (context , state)

@@ -17,7 +17,7 @@ class ScienceScreen extends StatelessWidget {
       {
         var article = NewsCubit.get(context).science;
 
-        return articleListBuilder(article);
+        return articleListBuilder(article , context);
       },
     );
 
