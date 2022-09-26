@@ -131,7 +131,7 @@ class MyApp extends StatelessWidget
               ),
               themeMode: AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
               debugShowCheckedModeBanner: false,
-              home: NewsHome()
+              home: ZamalekScreen()
           );
         },
       ),
