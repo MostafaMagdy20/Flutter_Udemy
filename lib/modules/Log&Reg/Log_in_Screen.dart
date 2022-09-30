@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_course/modules/Log&Reg/Register_Screen.dart';
 import 'package:flutter_course/shared/components/components.dart';
 
 class LogIN extends StatefulWidget
@@ -68,7 +69,7 @@ class _LogINState extends State<LogIN> {
                      {
                        if(value!.isEmpty)
                        {
-                         return('Email must be founnd');
+                         return('Email must be found');
                        }
                      }
                  ),
@@ -98,7 +99,7 @@ class _LogINState extends State<LogIN> {
                      {
                        if(value!.isEmpty)
                        {
-                         return('password must be founnd');
+                         return('password must be found');
                        }
                      }
                  ),
@@ -132,7 +133,10 @@ class _LogINState extends State<LogIN> {
                        ),
                      ),
                      TextButton(
-                         onPressed: (){},
+                         onPressed: ()
+                         {
+                           navigateTo(context, Register());
+                         },
                          child: Text(
                              'Register Now!',
                            style: TextStyle(

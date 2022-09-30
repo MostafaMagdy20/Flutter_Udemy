@@ -55,7 +55,7 @@ class BmiResult extends StatelessWidget {
                 children: [
                   Text(
                     '${gender ? 'Male' : 'Female'}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 30.0,
                       fontWeight: FontWeight.w500,
                       color: Colors.black,
@@ -63,13 +63,13 @@ class BmiResult extends StatelessWidget {
                   ),
                   Text(
                     '$result',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 70,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  Text(
+                  const Text(
                     'Normal BMI Range: 18.5 - 25 kg/m2',
                     style: TextStyle(
                         color: Colors.black45,
@@ -77,12 +77,12 @@ class BmiResult extends StatelessWidget {
                         fontWeight: FontWeight.w700),
                   ),
                   result < 25
-                      ? Text(
+                      ? const Text(
                           'Normal',
                           style: TextStyle(fontSize: 50.0,
                           fontWeight: FontWeight.w600),
                         )
-                      : Text(
+                      : const Text(
                           'Over Weight',
                           style: TextStyle(fontSize: 50.0,
                               fontWeight: FontWeight.w600),
