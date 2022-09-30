@@ -2,7 +2,7 @@ import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_course/modules/bmi%20result/BMI_result_screen.dart';
+import 'package:flutter_course/modules/BMI%20App/bmi%20result/BMI_result_screen.dart';
 import 'package:flutter_course/shared/components/components.dart';
 
 
@@ -322,7 +322,7 @@ class _BmiScreenState extends State<BmiScreen> {
               onPressed: ()
               {
                 var result = weight / pow(height/100 , 2);
-                print(result.round());
+                print(result);
 
                 navigateTo(context, BmiResult(
                     gender: male,

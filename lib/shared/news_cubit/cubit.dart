@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_course/modules/business/business_screen.dart';
-import 'package:flutter_course/modules/science/science_screen.dart';
-import 'package:flutter_course/modules/sport/sports_screen.dart';
+import 'package:flutter_course/modules/News%20App/business/business_screen.dart';
+import 'package:flutter_course/modules/News%20App/science/science_screen.dart';
+import 'package:flutter_course/modules/News%20App/sport/sports_screen.dart';
 import 'package:flutter_course/shared/network/remote/dio_helper.dart';
 import 'package:flutter_course/shared/news_cubit/states.dart';
 

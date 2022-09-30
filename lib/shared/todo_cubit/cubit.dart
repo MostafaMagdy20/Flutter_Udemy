@@ -1,12 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_course/modules/Todo%20App/archived%20tasks/Archived_tasks.dart';
+import 'package:flutter_course/modules/Todo%20App/done%20tasks/Done_tasks.dart';
+import 'package:flutter_course/modules/Todo%20App/new%20tasks/New_tasks.dart';
 import 'package:flutter_course/shared/network/local/cache_helper.dart';
 import 'package:flutter_course/shared/todo_cubit/states.dart';
 import 'package:sqflite/sqflite.dart';
-import '../../modules/archived tasks/Archived_tasks.dart';
-import '../../modules/done tasks/Done_tasks.dart';
-import '../../modules/new tasks/New_tasks.dart';
 
 class AppCubit extends Cubit<AppStates>
 {

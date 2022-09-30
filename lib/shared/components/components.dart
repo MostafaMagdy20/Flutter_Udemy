@@ -1,7 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_course/modules/web%20view/web_view_screen.dart';
+import 'package:flutter_course/modules/News%20App/web%20view/web_view_screen.dart';
 import 'package:flutter_course/shared/todo_cubit/cubit.dart';
 import 'package:flutter_course/shared/todo_cubit/states.dart';
 import 'package:hexcolor/hexcolor.dart';

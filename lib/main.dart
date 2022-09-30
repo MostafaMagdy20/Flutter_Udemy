@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_course/layout/News%20Home/News_home.dart';
 import 'package:flutter_course/layout/Todo%20Home/Todo_home.dart';
-import 'package:flutter_course/modules/bmi/BMI_Screen.dart';
+import 'package:flutter_course/modules/BMI%20App/bmi/BMI_Screen.dart';
 import 'package:flutter_course/modules/users/Users_Screen.dart';
 import 'package:flutter_course/modules/zamalek/Zamalek.dart';
 import 'package:flutter_course/modules/home/home.dart';
@@ -25,17 +25,17 @@ void main() async
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
   await CacheHelper.init();
-  bool isDark = CacheHelper.getDate(key: 'isDark');
+  // bool isDark = CacheHelper.getDate(key: 'isDark');
 
-  runApp(MyApp(isDark));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget
 {
 
-  final bool isDark;
-
-  MyApp(this.isDark);
+  // final bool isDark;
+  //
+  // MyApp(this.isDark);
 
   @override
   Widget build(BuildContext context)
@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget
       providers:
       [
         BlocProvider(create: (context) => NewsCubit()..getBusinessData()..getSportsData()..getScienceData()),
-        BlocProvider(create: (context) => AppCubit()..changeAppMode(fromCache: isDark)),
+        BlocProvider(create: (context) => AppCubit()..changeAppMode()),
       ],
       child: BlocConsumer<AppCubit , AppStates>(
         listener: (context , state) => {},
@@ -131,7 +131,7 @@ class MyApp extends StatelessWidget
               ),
               themeMode: AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
               debugShowCheckedModeBanner: false,
-              home: ZamalekScreen()
+              home: BmiScreen()
           );
         },
       ),

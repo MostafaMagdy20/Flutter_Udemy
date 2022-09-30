@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_course/shared/components/components.dart';
 import 'package:flutter_course/shared/todo_cubit/cubit.dart';
 import 'package:flutter_course/shared/todo_cubit/states.dart';
-import '../../shared/components/components.dart';
+
 
 
 class DoneTasks extends StatefulWidget {
